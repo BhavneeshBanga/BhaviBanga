@@ -221,12 +221,10 @@ rect {{ shape-rendering: geometricPrecision; }}
 </svg>"""
     return svg
 
-
-
 def main():
     username = os.getenv("GH_USERNAME")
     token = os.getenv("GITHUB_TOKEN")
-    print(username, "\n", token)
+    # print(username, "\n", token)
 
     if username and token:
         levels_grid = fetch_contribution_levels(username, token)
