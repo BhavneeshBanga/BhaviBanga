@@ -221,9 +221,7 @@ rect {{ shape-rendering: geometricPrecision; }}
 </svg>"""
     return svg
 
-import os
-from dotenv import load_dotenv
-load_dotenv()
+
 
 def main():
     username = os.getenv("GH_USERNAME")
