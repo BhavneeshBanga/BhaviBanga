@@ -22,7 +22,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
+      - name: Debug life_grid.py
+        run: |
+          pwd
+          find . -name "life_grid.py"
+          echo "------ First 250 lines ------"
+          nl -ba life_grid.py | sed -n '210,235p'
       
 
       - name: generate SVGs
