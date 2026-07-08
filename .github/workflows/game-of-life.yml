@@ -1,0 +1,40 @@
+name: generate game-of-life contribution grid
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # once a day, midnight UTC
+  workflow_dispatch: {}     # lets you trigger it manually from the Actions tab
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: set up python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: generate SVGs
+        env:
+          GH_USERNAME: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        run: python3 life_grid.py
+
+      - name: push to output branch
+        run: |
+          cd dist
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "update game of life contribution grid"
+          git push --force "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:output
