@@ -36,3 +36,8 @@ Open `life_grid.py` and adjust:
 - `LOOP_SECONDS` — total loop duration (default 26s)
 - `HOLD_FRAC` — how long it pauses on your real grid before/after evolving
 - `SIM_ALIVE_LIGHT` / `SIM_ALIVE_DARK` — the "organism" color, if cyan isn't your thing
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/<username>/game-of-life-contribution-grid/output/life-grid-dark.svg" />
+  <img alt="game of life contribution grid" src="https://raw.githubusercontent.com/<username>/game-of-life-contribution-grid/output/life-grid-light.svg" />
+</picture>
